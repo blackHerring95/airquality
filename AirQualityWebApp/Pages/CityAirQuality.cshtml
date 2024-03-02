@@ -4,13 +4,27 @@
 <h1>@Model.CityAirQuality.GetName()</h1>
 @{
 
-    var result = Model.CityAirQuality.ListOutLeves();
-
+    var result = Model.CityAirQuality.GetPollutantList();
     if (result != null)
     {
-        foreach(var res in result)
+        foreach (var res in result)
         {
-            <p>@res</p>
+            if (res.Name == "Air quality index")
+            {
+                <h3 id="main-key">@res.Name</h3>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated @res.GetStatus()" role="progressbar" aria-valuenow="@res.Value" aria-valuemin="0" aria-valuemax="@res.MaxValue" style="width: @res.GetPercentage()%">@res.Value / @res.MaxValue</div>
+                </div>
+
+            }
+            else
+            {
+                <p id="sub-key">@res.Name</p>
+                
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated @res.GetStatus()" role="progressbar" aria-valuenow="@res.Value" aria-valuemin="0" aria-valuemax="@res.MaxValue" style="width: @res.GetPercentage()%">@res.Value / @res.MaxValue</div>
+                </div>
+            }
         }
     }
 
