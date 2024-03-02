@@ -1,0 +1,17 @@
+﻿@page
+@model AirQualityWebApp.Pages.CityAirQualityModel
+
+<h1>@Model.CityAirQuality.GetName()</h1>
+@{
+
+    var result = Model.CityAirQuality.ListOutLeves();
+
+    if (result != null)
+    {
+        foreach(var res in result)
+        {
+            <p>@res</p>
+        }
+    }
+
+}

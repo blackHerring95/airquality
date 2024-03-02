@@ -1,0 +1,16 @@
+﻿@page
+@model AirQualityWebApp.Pages.AirQualityModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="text-center">
+    <h1 class="display-4">We will display here the quality of the air you are breathing.</h1>
+</div>
+
+
+<p>Enter a customer name:</p>
+
+<form method="post">
+    Name:
+    <input asp-for="Query.CityName" />
+    <input type="submit" />
+</form>
